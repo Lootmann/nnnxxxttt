@@ -3,12 +3,48 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  const user = await prisma.user.create({
-    data: {
-      name: "bob",
-    },
-  });
-  console.log(user);
+  const users = [];
+  users.push(
+    await prisma.user.create({
+      data: {
+        name: "bob",
+        posts: {
+          create: [
+            {
+              title: "first",
+              content: "first content",
+            },
+            {
+              title: "second",
+              content: "second content",
+            },
+          ],
+        },
+      },
+    })
+  );
+
+  users.push(
+    await prisma.user.create({
+      data: {
+        name: "bib",
+        posts: {
+          create: [
+            {
+              title: "bfirst",
+              content: "bfirst content",
+            },
+            {
+              title: "bsecond",
+              content: "bsecond content",
+            },
+          ],
+        },
+      },
+    })
+  );
+
+  console.log(users);
 }
 
 main()

@@ -11,9 +11,9 @@ datasource db {
 }
 
 model User {
-  id   Int    @id @default(autoincrement())
-  name String
-  Post Post[]
+  id    Int    @id @default(autoincrement())
+  name  String
+  posts Post[]
 
   @@map("users")
 }

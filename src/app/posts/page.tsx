@@ -13,18 +13,25 @@ export default async function Page() {
   const posts = await getPosts();
 
   return (
-    <div className="flex flex-col gap-4 text-xl">
+    <div className="w-full flex flex-col gap-4 text-xl">
       <h2 className="text-2xl">/hoge/posts.tsx</h2>
 
-      <div className="flex flex-col gap-4">
+      <div className="w-full flex flex-col gap-4">
         {posts.map((post) => (
-          <Link
-            href={`/posts/${post.id}`}
-            key={post.id}
-            className="hover:bg-slate-700 px-2 rounded-md"
+          <article
+            className="flex-1 border p-2 border-slate-500 hover:bg-slate-700
+            rounded-md transition-all duration-200 inline"
           >
-            {post.id}, {post.title}
-          </Link>
+            <Link href={`/posts/${post.id}`} key={post.id}>
+              <header>
+                <span>
+                  {post.title} @ {post.author.name}
+                </span>
+              </header>
+
+              <p>{post.content}</p>
+            </Link>
+          </article>
         ))}
       </div>
     </div>

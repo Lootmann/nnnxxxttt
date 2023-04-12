@@ -1,10 +1,18 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/prisma/prisma";
-import { NextApiRequest } from "next";
 
-export async function POST(req: NextApiRequest) {
-  const { id, title, content } = req.body;
-  console.log(id, title, content);
+// TODO: validation
+export async function POST(req: NextRequest) {
+  const body = await req.json();
+  const { authorId, title, content } = body;
 
-  return NextResponse.json({ msg: "hello world" });
+  const res = await prisma.post.create({
+    data: {
+      authorId: authorId,
+      title: title,
+      content: content,
+    },
+  });
+
+  return NextResponse.json({ res });
 }

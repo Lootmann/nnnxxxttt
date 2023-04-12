@@ -1,5 +1,5 @@
 import { Header } from "./components/Header";
-import "./styles/tailwind.css";
+import "../styles/tailwind.css";
 
 export const metadata = {
   title: "Nexxjs World",

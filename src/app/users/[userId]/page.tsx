@@ -16,7 +16,6 @@ async function getUserById(userId: number) {
 
 export default async function Page({ params }: PageProps) {
   const user = await getUserById(params.userId);
-  console.log(user);
 
   return (
     <div className="flex flex-col gap-4 text-xl">

@@ -19,6 +19,7 @@ export default async function Page() {
       <div className="w-full flex flex-col gap-4">
         {posts.map((post) => (
           <article
+            key={post.id}
             className="flex-1 border p-2 border-slate-500 hover:bg-slate-700
             rounded-md transition-all duration-200 inline"
           >

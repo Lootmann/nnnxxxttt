@@ -12,6 +12,9 @@ export async function GET(
     where: {
       id: Number(params.postId),
     },
+    include: {
+      author: true,
+    },
   });
 
   return NextResponse.json({ post });

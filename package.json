@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "prisma:init": "prisma migrate dev --name init",
-    "prisma:seed": "ts-node --compiler-options {\\\"module\\\":\\\"CommonJS\\\"} ./src/prisma/prisma.ts"
+    "prisma:seed": "ts-node --compiler-options {\\\"module\\\":\\\"CommonJS\\\"} ./src/prisma/prisma.ts",
+    "prisma:generate": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^4.12.0",

@@ -15,7 +15,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen bg-zinc-900 text-zinc-100">
         <Header />
-        <div className="min-h-[calc(100vh-80px)] bg-zinc-800 px-20 pt-6">
+        <div className="flex flex-col min-h-[calc(100vh-80px)] bg-zinc-800 px-20">
           {children}
         </div>
       </body>

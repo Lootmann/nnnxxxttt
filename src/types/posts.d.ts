@@ -4,3 +4,9 @@ type TPost = {
   content: string;
   author: TUser;
 };
+
+type TPostForm = {
+  title: string;
+  content: string;
+  authorId: number;
+};

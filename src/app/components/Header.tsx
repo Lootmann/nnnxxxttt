@@ -12,8 +12,28 @@ export function Header() {
 
       <span className="mx-auto"></span>
 
-      <Link href={`/posts/new`} className="bg-orange-800 px-2 rounded-md">
+      <Link
+        href={`/posts/new`}
+        className="bg-orange-800 hover:bg-orange-500 hover:text-slate-950
+        px-2 rounded-md transition-all duration-200"
+      >
         Write
+      </Link>
+
+      <Link
+        href={`/auths/login`}
+        className="bg-green-800 hover:bg-green-500 hover:text-slate-950
+        px-2 rounded-md transition-all duration-200"
+      >
+        Login
+      </Link>
+
+      <Link
+        href={`/auths/signup`}
+        className="bg-green-800 hover:bg-green-500 hover:text-slate-950
+        px-2 rounded-md transition-all duration-200"
+      >
+        Signup
       </Link>
     </div>
   );

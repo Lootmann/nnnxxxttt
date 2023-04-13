@@ -2,7 +2,9 @@ import Link from "next/link";
 import React from "react";
 
 async function getPosts() {
-  const res = await fetch("http://localhost:3000/api/posts");
+  const res = await fetch("http://localhost:3000/api/posts", {
+    cache: "no-cache",
+  });
   if (!res.ok) throw new Error("/posts/page.tsx");
 
   const data = await res.json();

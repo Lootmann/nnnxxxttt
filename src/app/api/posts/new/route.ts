@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
 
   const res = await prisma.post.create({
     data: {
-      authorId: authorId,
+      authorId: Number(authorId),
       title: title,
       content: content,
     },

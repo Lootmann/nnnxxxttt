@@ -1,7 +1,14 @@
 "use client";
 
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import React from "react";
+import { useCookies } from "react-cookie";
+import { useRouter } from "next/navigation";
+
+type TForm = {
+  name: String;
+  loginError: String;
+};
 
 export default function LoginPage() {
   const {
@@ -9,12 +16,17 @@ export default function LoginPage() {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+    setError,
+    clearErrors,
+  } = useForm<TForm>();
 
-  async function onSubmit(data) {
+  const [, setCookie] = useCookies(["userAuth"]);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(true);
+  const router = useRouter();
+
+  async function onSubmit(data: TForm) {
     console.log("* onSubmit");
-    console.log(data.name);
-    console.log("name =", watch("name"));
+    console.log("wathc(name) =", watch("name"));
 
     const res = await fetch("http://localhost:3000/api/auths/login", {
       method: "POST",
@@ -26,6 +38,17 @@ export default function LoginPage() {
 
     const d = await res.json();
     console.log(d);
+
+    if (res.ok) {
+      setCookie("userAuth", data.name, {
+        path: "/",
+        sameSite: true,
+      });
+      router.replace("/");
+      setIsSubmitting(!isSubmitting);
+    } else {
+      setError("loginError", { message: "fail to login D:" });
+    }
   }
 
   return (
@@ -33,12 +56,21 @@ export default function LoginPage() {
       <h1 className="text-2xl">LoginPage</h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+        {errors.loginError && (
+          <p className="text-orange-600 text-2xl rounded-md px-2">
+            {errors.loginError?.message}
+          </p>
+        )}
+
         <input
-          {...register("name")}
+          {...register("name", { onChange: () => clearErrors() })}
+          required
           placeholder="name"
           className="bg-slate-950 px-2 rounded-md"
+          autoFocus
         />
 
+        {/* TODO: add password */}
         <input
           type="submit"
           value="Login"

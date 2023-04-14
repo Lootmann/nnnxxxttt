@@ -15,8 +15,8 @@ export default async function Page() {
   const posts = await getPosts();
 
   return (
-    <div className="w-full flex flex-col gap-4 text-xl">
-      <h2 className="text-2xl">/hoge/posts.tsx</h2>
+    <div className="w-full flex flex-col gap-4 text-xl pt-4">
+      <h2 className="text-2xl">/posts/posts.tsx</h2>
 
       <div className="w-full flex flex-col gap-4">
         {posts.map((post) => (

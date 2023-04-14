@@ -15,8 +15,8 @@ export default async function Page() {
   const users = await getUsers();
 
   return (
-    <div className="flex flex-col gap-4 text-xl">
-      <h2 className="text-2xl">/hoge/pages.tsx</h2>
+    <div className="flex flex-col gap-4 text-xl pt-4">
+      <h2 className="text-2xl">/users/pages.tsx</h2>
 
       <div className="flex flex-col gap-4">
         {users.map((user) => (

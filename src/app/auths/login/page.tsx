@@ -44,8 +44,8 @@ export default function LoginPage() {
         path: "/",
         sameSite: true,
       });
-      router.replace("/");
       setIsSubmitting(!isSubmitting);
+      window.location.href = "/";
     } else {
       setError("loginError", { message: "fail to login D:" });
     }

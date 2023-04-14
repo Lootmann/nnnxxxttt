@@ -1,5 +1,6 @@
 import { Header } from "./components/Header";
 import "../styles/tailwind.css";
+import { AuthProvider } from "./auths/AuthContext";
 
 export const metadata = {
   title: "Nexxjs World",
@@ -13,12 +14,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-zinc-900 text-zinc-100">
-        <Header />
-        <div className="flex flex-col min-h-[calc(100vh-80px)] bg-zinc-800 px-20">
-          {children}
-        </div>
-      </body>
+      {/* TODO: Looks Freaking Bad */}
+      <AuthProvider>
+        <body className="min-h-screen bg-zinc-900 text-zinc-100">
+          <Header />
+          <div className="flex flex-col min-h-[calc(100vh-80px)] bg-zinc-800 px-20">
+            {children}
+          </div>
+        </body>
+      </AuthProvider>
     </html>
   );
 }

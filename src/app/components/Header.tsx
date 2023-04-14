@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import React from "react";
 import { useAuthContext } from "../auths/AuthContext";
@@ -37,6 +38,8 @@ export function Header() {
         </>
       ) : (
         <>
+          <span className="mx-auto"></span>
+
           <Link
             href={`/auths/login`}
             className="bg-green-800 hover:bg-green-500 hover:text-slate-950

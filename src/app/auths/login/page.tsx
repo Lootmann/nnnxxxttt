@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useCookies } from "react-cookie";
-import { useRouter } from "next/navigation";
 
 type TForm = {
   name: String;
@@ -22,7 +21,6 @@ export default function LoginPage() {
 
   const [, setCookie] = useCookies(["userAuth"]);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(true);
-  const router = useRouter();
 
   async function onSubmit(data: TForm) {
     console.log("* onSubmit");

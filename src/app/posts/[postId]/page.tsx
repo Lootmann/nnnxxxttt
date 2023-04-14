@@ -7,7 +7,9 @@ type PageProps = {
 };
 
 async function getPostById(postId: number) {
-  const res = await fetch(`http://localhost:3000/api/posts/${postId}`);
+  const res = await fetch(`http://localhost:3000/api/posts/${postId}`, {
+    cache: "no-cache",
+  });
   if (!res.ok) throw new Error("posts/[postId]/page.tsx");
 
   const data = await res.json();

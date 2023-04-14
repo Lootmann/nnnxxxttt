@@ -7,7 +7,9 @@ type PageProps = {
 };
 
 async function getUserById(userId: number) {
-  const res = await fetch(`http://localhost:3000/api/users/${userId}`);
+  const res = await fetch(`http://localhost:3000/api/users/${userId}`, {
+    cache: "no-cache",
+  });
   if (!res.ok) throw new Error("users/[userId]/page.tsx");
 
   const data = await res.json();

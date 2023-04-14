@@ -26,7 +26,7 @@ export default async function Page({ params }: PageProps) {
         <p>Title: {post.title}</p>
         <p>Content: {post.title}</p>
         <p>
-          Author: {post.author.id} {post.author.name}
+          Author: [{post.author.id}] {post.author.name}
         </p>
       </div>
     </div>
